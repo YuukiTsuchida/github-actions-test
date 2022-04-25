@@ -23,7 +23,6 @@ jobs:
       - name: update text
         id: update-text
         run: 
-          echo "text"
           echo "text" >> ./change_and_commit/test.txt
       - name: check diff file count
         id: diff-file-count
