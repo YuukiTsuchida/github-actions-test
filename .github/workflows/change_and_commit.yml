@@ -20,10 +20,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.inputs.checkout-branch }}
-      - if: failure()
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - name: update text
         id: update-text
         run: 
