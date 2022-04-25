@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
      inputs:
       checkout-branch:
-        description: 'input checkout branch name'     
+        description: 'チェックアウトするブランチ'     
         required: true
         default: "main"
       push-branch:
-        description: 'input push branch name'     
+        description: 'プッシュするブランチ'     
         required: true
 
 jobs:
