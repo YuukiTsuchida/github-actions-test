@@ -19,10 +19,10 @@ jobs:
           echo "text" >> ./change_and_commit/test.txt
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v1.1.2
+        uses: tj-actions/changed-files@v3
         with:
           files: |
-            test.txt$
+            test\.txt$
       - name: diff file count
         if: steps.changed-files.outputs.only_modified
         id: diff-file-count
