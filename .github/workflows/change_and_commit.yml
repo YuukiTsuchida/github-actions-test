@@ -22,7 +22,7 @@ jobs:
         uses: tj-actions/changed-files@v1.1.2
         with:
           files: |
-            test.txt
+            test.txt$
       - name: diff file count
         if: steps.changed-files.outputs.only_modified
         id: diff-file-count
