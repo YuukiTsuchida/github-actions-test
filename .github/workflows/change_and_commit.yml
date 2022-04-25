@@ -20,7 +20,7 @@ jobs:
           files: |
             test\.txt$
       - name: diff file count
-        if: steps.changed-files.outputs.only_modified == 'true'
+        if: contains(steps.changed-files.outputs.modified_files, 'test.txt')
         id: diff-file-count
         run: git diff
       #- name: commit files
