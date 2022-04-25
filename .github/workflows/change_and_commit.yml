@@ -2,6 +2,11 @@ name: update misrecognition table
 
 on:
   workflow_dispatch:
+     inputs:
+      branch:
+        description: 'select commmit branch'     
+        required: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
