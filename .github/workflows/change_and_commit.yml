@@ -11,16 +11,12 @@ jobs:
         with:
           fetch-depth: 0
       - name: update text
+        id: update-text
         run: 
           echo "text" >> ./change_and_commit/test.txt
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v13
-        with:
-          files: |
-            test\.txt$
+          echo "::set-output name=count::$(git diff --name-only | wc -l)"
       - name: diff file count
-        if: contains(steps.changed-files.outputs.modified_files, 'test.txt')
+        if: steps.update-text.outputs.count > 0
         id: diff-file-count
         run: git diff
       #- name: commit files
