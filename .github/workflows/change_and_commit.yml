@@ -1,0 +1,34 @@
+name: action document exporter
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "phase5"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.13.0]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v1.1.2
+      - name: List all modified files
+        if: contains(steps.changed-files.outputs.all_modified_files, 'src/actions/actionData.js')
+        run: |
+          npm run export-action-document
+
+
+
