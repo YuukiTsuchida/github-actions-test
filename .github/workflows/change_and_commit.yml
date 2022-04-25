@@ -19,7 +19,7 @@ jobs:
         run: echo "::set-output name=count::$(git diff --name-only | wc -l)"
       - name: result
         if: steps.diff-file-count.outputs.count > 0
-        id: diff-file-count
+        id: result
         run: git diff
       #- name: commit files
       #  if: steps.diff-file-count.outputs.count > 0
