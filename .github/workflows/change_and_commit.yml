@@ -6,10 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.13.0]
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -19,7 +15,7 @@ jobs:
           echo "text" >> ./change_and_commit/test.txt
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v3
+        uses: tj-actions/changed-files@v13
         with:
           files: |
             test\.txt$
