@@ -22,20 +22,16 @@ jobs:
       - name: check diff file count
         id: diff-file-count
         run: echo "::set-output name=count::$(git diff --name-only | wc -l)"
-      - name: result
+      - name: commit files
         if: steps.diff-file-count.outputs.count > 0
-        id: result
-        run: git diff
-      #- name: commit files
-      #  if: steps.diff-file-count.outputs.count > 0
-      #  run: |
-      #    git config --local user.email "action@github.com"
-      #    git config --local user.name "GitHub Action"
-      #    git add ./src
-      #    git commit -m "auto format"
-      #- name: Push changes
-      #  if: steps.diff-file-count.outputs.count > 0
-      #  uses: ad-m/github-push-action@master
-      #  with:
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    branch: ${{ github.ref }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./change_and_commit/test.txt
+          git commit -m "update"
+      - name: Push changes
+        if: steps.diff-file-count.outputs.count > 0
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.event.inputs.branch }}
