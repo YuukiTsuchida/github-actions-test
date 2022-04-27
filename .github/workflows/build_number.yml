@@ -1,4 +1,4 @@
-name: update misrecognition table
+name: generate build number
 
 on:
   workflow_dispatch:
