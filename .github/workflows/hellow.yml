@@ -1,0 +1,8 @@
+name: Hello
+on: push
+jobs:
+    hello_world_job:
+        runs-on: ubuntu-latest      # 最新のUbuntu環境で実行
+        steps:                      # ステップ
+        - run: echo "Hello, World!" # Hello, World! を出力
+        - uses: actions/checkout@v4 # チェックアウト
