@@ -17,3 +17,6 @@ jobs:
             - run: |
                 echo "Hello, World!" # Hello, World! を出力
                 echo ::debug::This is a debug message.
+            - run: echo ::error::This is an error message1. # エラーメッセージを出力
+            - run: echo ::error::This is an error message2. # エラーメッセージを出力
+            - run: echo ::error::This is an error message3. # エラーメッセージを出力
