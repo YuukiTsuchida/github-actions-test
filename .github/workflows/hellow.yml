@@ -10,7 +10,7 @@ jobs:
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 script: |
-                    const output = `## Hello World!
-                    This is a test of GitHub Actions.
+                    const output = `## Hello World!\n
+                    This is a test of GitHub Actions.\n
                     *Pushed by: @${{ github.sha }}, Action: \`${{ github.event_name }}\`*`;
                     await core.summary.addHeading("Script Sample").addRaw(output).write()
