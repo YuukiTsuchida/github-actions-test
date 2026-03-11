@@ -10,3 +10,18 @@ jobs:
                 echo "# Title: Hello World" >> ${GITHUB_STEP_SUMMARY}
                 echo "Hello World!" >> ${GITHUB_STEP_SUMMARY}
                 echo "This is a test of GitHub Actions." >> ${GITHUB_STEP_SUMMARY}
+            - uses: actions/github-script@v6
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+                script: |
+                    const output = `## Hello World!
+                    This is a test of GitHub Actions.
+                    *Pushed by: @${{ github.sha }}, Action: \`${{ github.event_name }}\`*`;
+
+                    github.rest.issues.createComment({
+                    issue_number: context.issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: output
+                    })
+                    await core.summary.addHeading("Script Sample").addRaw(output).write()
