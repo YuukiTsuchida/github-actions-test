@@ -7,5 +7,5 @@ jobs:
             PASS: PASSVALUE
         steps:                      # ステップ
         - run: echo "Hello, World!" # Hello, World! を出力
-        - run: echo "::add-mask::${PASSVALUE}"
-        - run: echo "${PASSVALUE}"
+        - run: echo "::add-mask::${PASS}"
+        - run: echo "${PASS}"
