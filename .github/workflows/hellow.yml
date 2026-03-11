@@ -9,3 +9,6 @@ jobs:
         - run: echo "Hello, World!" # Hello, World! を出力
         - run: echo "::add-mask::${PASS}"
         - run: echo "${PASS}"
+        - run: echo ::error::This is an error message. # エラーメッセージを出力
+        - run: echo ::warning::This is a warning message. # 警告メッセージを出力
+        - run: echo ::notice::This is a notice message. # 通知メッセージを出力
