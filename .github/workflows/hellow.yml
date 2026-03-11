@@ -14,3 +14,6 @@ jobs:
                     This is a test of GitHub Actions.\n
                     *Pushed by: @${{ github.sha }}, Action: \`${{ github.event_name }}\`*`;
                     await core.summary.addHeading("Script Sample").addRaw(output).write()
+            - run: |
+                echo "Hello, World!" # Hello, World! を出力
+                echo ::debug::This is a debug message.
