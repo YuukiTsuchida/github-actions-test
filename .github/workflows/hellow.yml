@@ -6,11 +6,7 @@ jobs:
         env:
             PASS: PASSVALUE
         steps:                      # ステップ
-            - run: |
-                echo "# Title: Hello World" >> ${GITHUB_STEP_SUMMARY}
-                echo "Hello World!" >> ${GITHUB_STEP_SUMMARY}
-                echo "This is a test of GitHub Actions." >> ${GITHUB_STEP_SUMMARY}
-            - uses: actions/github-script@v6
+            - uses: actions/github-script@v8
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 script: |
