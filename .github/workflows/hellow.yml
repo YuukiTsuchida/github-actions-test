@@ -6,4 +6,8 @@ jobs:
         steps:                      # ステップ
         - run: echo "Hello, World!" # Hello, World! を出力
         - uses: actions/checkout@v4 # チェックアウト
-        - run: echo ::debug::This is a debug message. # デバッグメッセージを出力
+        - run: |
+            echo "::group::Show environment"
+            echo ::debug::This is a debug message. # デバッグメッセージを出力
+            printenv
+            echo "::endgroup::"
